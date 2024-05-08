@@ -5,18 +5,25 @@ const div = view2.querySelector("div");
 const h2 = div.querySelector("h2");
 
 // syntax = addEventListener(event, function, useCapture);
-
+/*
 const doSomething = () => {
     alert("doing something!");
 }
 // we need add eventListener wherever we are interacting in this case it h2
-h2.addEventListener("click", doSomething, false);
 // fasle is a default useCapture;
+h2.addEventListener("click", doSomething, false);
+// you can just ignore that false (because false default useCapture)
+h2.addEventListener("click", doSomething);
 
+// how to remove an eventListner incase if don't want it 
+h2.removeEventListener("click", doSomething, false);
+// now if we click on h2 element nothing happens because we are adding an eventListener and immediately removing it *** remember we can't remove if we don't have name of the function *** */
 
-
-
-
+// let's add annamynous function to our eventListener
+h2.addEventListener("click", (event) => {
+    console.log(event.target);
+    event.target.textContent = "clicked😂";
+})
 
 
 
