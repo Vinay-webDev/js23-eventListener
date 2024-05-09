@@ -20,10 +20,41 @@ h2.removeEventListener("click", doSomething, false);
 // now if we click on h2 element nothing happens because we are adding an eventListener and immediately removing it *** remember we can't remove if we don't have name of the function *** */
 
 // let's add annamynous function to our eventListener
+/*
 h2.addEventListener("click", (event) => {
     console.log(event.target);
     event.target.textContent = "clicked😂";
+}) */
+
+// few more examples
+// let's look into an event example which is also makes it safer to start working with document object model
+
+document.addEventListener("readystatechange", (e) => {
+    if (e.target.readyState === "complete") {
+        console.log("readyState: complete");
+    }
+    // also we can initiate app method initApp()
+    initApp();
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
