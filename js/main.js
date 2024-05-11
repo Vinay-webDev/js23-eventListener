@@ -27,8 +27,8 @@ h2.addEventListener("click", (event) => {
 }) */
 
 // few more examples
-// let's look into an event example which is also makes it safer to start working with document object model
-
+// let's look into an event example which  also makes it safer to start working with document object model
+/*
 document.addEventListener("readystatechange", (event) => {
     if (event.target.readyState === "complete") {
         console.log("readyState: complete");
@@ -53,16 +53,41 @@ const initApp = () => {
     h2.addEventListener("click", (event) => {
         event.target.textContent = "clicked";
     })
+} */
+
+// let's look into an event that also makes safer to start working with DOM (document object model) or web page or web app
+/*
+const view = document.querySelector("#view2");
+const div = view.querySelector("div");
+const h2 = div.querySelector("h2");  */
+
+document.addEventListener("readystatechange", (event) => {
+    if (event.target.readyState === "complete") {
+        console.log("readyState: complete");
+        // to kick-off our web app or web page we have initApp() or init()
+        initApp();
+        // now i need to define this initApp() 
+    }
+})
+const initApp = () => {
+    const view = document.querySelector("#view2");
+    const div = view.querySelector("div");
+    const h2 = div.querySelector("h2");
+    // what I'm gonna do is now I'm gonna add eventListener to each of these variables 
+    view.addEventListener("click", (event) => {
+        view.style.backgroundColor = "green";
+    })
+    
+    div.addEventListener("click", (event) => {
+        div.style.backgroundColor = "yellow";
+    })
+
+    h2.addEventListener("click", (event) => {
+        event.target.textContent = "clicked";
+        h2.style.color = "black";
+    })
 }
-
-
-
-
-
-
-
-
-
+// worth noticing I'm only clicking on the h2 element but the entire section is listening why?
 
 
 
