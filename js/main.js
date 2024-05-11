@@ -60,7 +60,7 @@ const initApp = () => {
 const view = document.querySelector("#view2");
 const div = view.querySelector("div");
 const h2 = div.querySelector("h2");  */
-
+/*
 document.addEventListener("readystatechange", (event) => {
     if (event.target.readyState === "complete") {
         console.log("readyState: complete");
@@ -86,15 +86,36 @@ const initApp = () => {
         event.target.textContent = "clicked";
         h2.style.color = "black";
     })
+} */
+// worth noticing I'm only clicking on the h2 element but the entire section is changed why?
+
+/* It's because of ***event bubbling*** useCapture which is set false default 
+even though we click only h2 element still which is inside a div which bubbles up and triggers the event in div and then triggers the event in section. as we see it works it's way from inside to the = event bubbling */ 
+// if we use useCapture set it to true the things will change
+// imma work it again for practice
+document.addEventListener("readystatechange", (event) => {
+    if (event.target.readyState === "complete") {
+        console.log("readyState: complete");
+        initApp();
+    }
+})
+const initApp = () => {
+    const view = document.querySelector("#view2");
+    const div = view.querySelector("div");
+    const h2 = div.querySelector("h2");
+
+    view.addEventListener("click", (event) => {
+        view.style.backgroundColor = "green";
+    }, true)
+    div.addEventListener("click", (event) => {
+        div.style.backgroundColor = "yellow";
+    }, true)
+    h2.addEventListener("click", (event) => {
+        event.target.textContent = "clicked";
+        h2.style.color = "black";
+    }, true)
 }
-// worth noticing I'm only clicking on the h2 element but the entire section is listening why?
-
-
-
-
-
-
-
+/* in this case while having useCapture set it to true the events works it's way from out to the inside the best to visualize this is to have something called stopPropagation()*/
 
 
 
