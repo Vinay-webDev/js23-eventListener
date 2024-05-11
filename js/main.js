@@ -204,19 +204,27 @@ const initApp = () => {
     const h2 = div.querySelector("h2");
 
     view.addEventListener("click", (event) => {
-        view.classList.add("green");
-        view.classList.remove("darkBlue");
+        view.classList.toggle("green");
+        view.classList.toggle("darkBlue");
     }, false)
     div.addEventListener("click", (event) => {
-        div.classList.add("yellow");
+        div.classList.toggle("yellow");
     }, false)
     h2.addEventListener("click", (event) => {
-        event.target.textContent = "clicked";
+        const myText = event.target.textContent;
+        myText === "My 2nd View"? (event.target.textContent = "clicked"):
+                                  (event.target.textContent = "My 2n View");
     }, false)
 }
-
-
-
+/* we konw we can easily toggle the backgroundColors but how to toggle
+text in h2??? 
+we can't just toggle the textContent directly like we did it with 
+backgroundColor to do that we need to use some code with ternary
+as you can notice we can't just leave to strings ("My 2nd view" and "clicked")
+we need that with event.target.textContent*/
+/* here it's not working bcz I had h2 "My 2nd View" in my ternary 
+ I have "My 2nd view" so that's what causing problem here!!!! 
+ idk what f happed it's only working first time!!! **/
 
 
 
