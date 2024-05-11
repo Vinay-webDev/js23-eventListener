@@ -116,8 +116,8 @@ const initApp = () => {
         h2.style.color = "black";
     }, true)
 } */
-/* in this case while having useCapture set it to true the events works it's way from out to the inside the best to visualize this is to have something called stopPropagation()*/
 
+/* in this case while having useCapture set it to true the events works it's way from out to the inside the best to visualize this is to have something called stopPropagation()*/
 document.addEventListener("readystatechange", (event) => {
     if (event.target.readyState === "complete") {
         console.log("readyState: complete");
@@ -131,17 +131,45 @@ const initApp = () => {
 
     view.addEventListener("click", (event) => {
         // remember we need use stopPrapagation before this
-        event.stopPropagation();
+        
         view.style.backgroundColor = "green";
-    }, true)
+    }, false)
     div.addEventListener("click", (event) => {
         div.style.backgroundColor = "yellow";
-    }, true)
+    }, false)
     h2.addEventListener("click", (event) => {
+        event.stopPropagation();
         event.target.textContent = "clicked";
-        h2.style.color = "black";
-    }, true)
-}
+        //h2.style.color = "black";
+    }, false)
+} 
+/* we have stopped the event propagation exactly at section and if you notice while having useCapture set it to true it'll prevent event bubbling and the way the event propagation works it's way from outer most element to the inner most element */
+// let's try it the other way (put stopPrapagation at h2 and set useCapture to default (false));
+/* now the event propagation stopped exactly at h2 element and we also prevented event bubbling */ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
