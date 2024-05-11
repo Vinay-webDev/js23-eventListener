@@ -117,7 +117,10 @@ const initApp = () => {
     }, true)
 } */
 
-/* in this case while having useCapture set it to true the events works it's way from out to the inside the best to visualize this is to have something called stopPropagation()*/
+/* in this case while having useCapture set it to true
+ the events works it's way from out to the inside the best 
+ to visualize this is to have something called stopPropagation()*/
+ /*
 document.addEventListener("readystatechange", (event) => {
     if (event.target.readyState === "complete") {
         console.log("readyState: complete");
@@ -142,15 +145,48 @@ const initApp = () => {
         event.target.textContent = "clicked";
         //h2.style.color = "black";
     }, false)
-} 
+} */
 /* we have stopped the event propagation exactly at section and if you notice while having useCapture set it to true it'll prevent event bubbling and the way the event propagation works it's way from outer most element to the inner most element */
 // let's try it the other way (put stopPrapagation at h2 and set useCapture to default (false));
 /* now the event propagation stopped exactly at h2 element and we also prevented event bubbling */ 
+/* so as we can say whenever we use default false useCapture then
+the event propagation works it's way from in to the out and if we 
+use true as useCapture then it works it's way from out the in **/
+/* useCapture = false (default) ===>>> in to the out 
+   useCapture = true ===>>> out to the in */
+/////////////////////////////////////////////////////////////////
+// now let's look at the event.target 
+document.addEventListener("readystatechange", (event) => {
+    if (event.target.readyState === "complete") {
+        console.log("readyState: complete");
+        initApp();
+    }
+})
+const initApp = () => {
+    const view = document.querySelector("#view2");
+    const div = view.querySelector("div");
+    const h2 = div.querySelector("h2");
 
-
-
-
-
+    view.addEventListener("click", (event) => {
+        
+        event.target.style.backgroundColor = "green";
+    })
+    div.addEventListener("click", (event) => {
+        event.target.style.backgroundColor = "yellow";
+        
+    })
+    h2.addEventListener("click", (event) => {
+        event.target.textContent = "clicked";
+    })
+}
+/* event.target is not about what the event we added 
+it's about what the target is */ 
+/* 1.===>> as you can see when I clicked on h2 the text and
+the backgroundColor of h2 only changed to "green" even though
+we are not able to see. it actually first changed to "yellow" then 
+it changed to "green" 
+2. when i clicked div on same happens
+3. clicked on section  */ 
 
 
 
