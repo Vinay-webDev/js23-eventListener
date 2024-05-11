@@ -156,6 +156,7 @@ use true as useCapture then it works it's way from out the in **/
    useCapture = true ===>>> out to the in */
 /////////////////////////////////////////////////////////////////
 // now let's look at the event.target 
+/* 
 document.addEventListener("readystatechange", (event) => {
     if (event.target.readyState === "complete") {
         console.log("readyState: complete");
@@ -178,7 +179,7 @@ const initApp = () => {
     h2.addEventListener("click", (event) => {
         event.target.textContent = "clicked";
     })
-}
+} */
 /* event.target is not about what the event we added 
 it's about what the target is */ 
 /* 1.===>> as you can see when I clicked on h2 the text and
@@ -186,8 +187,33 @@ the backgroundColor of h2 only changed to "green" even though
 we are not able to see. it actually first changed to "yellow" then 
 it changed to "green" 
 2. when i clicked div on same happens
-3. clicked on section  */ 
+3. clicked on section  
+4. clicked on section then div then h2*/ 
+//////////////////////////////////////////////////////////////////////////////////////////////
+// how to add classes 
+// classLists
+document.addEventListener("readystatechange", (event) => {
+    if (event.target.readyState === "complete") {
+        console.log("readyState: complete");
+        initApp();
+    }
+})
+const initApp = () => {
+    const view = document.querySelector("#view2");
+    const div = view.querySelector("div");
+    const h2 = div.querySelector("h2");
 
+    view.addEventListener("click", (event) => {
+        view.classList.add("green");
+        view.classList.remove("darkBlue");
+    }, false)
+    div.addEventListener("click", (event) => {
+        div.classList.add("yellow");
+    }, false)
+    h2.addEventListener("click", (event) => {
+        event.target.textContent = "clicked";
+    }, false)
+}
 
 
 

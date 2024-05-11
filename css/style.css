@@ -62,7 +62,12 @@ main {
 .black {
     background-color: #000;
 }
-
+.yellow {
+    background-color: yellow;
+}
+.green {
+    background-color: green;
+}
 nav {
     display: -webkit-box;
     display: -ms-flexbox;
