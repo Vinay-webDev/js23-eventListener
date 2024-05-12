@@ -250,6 +250,21 @@ const initApp = () => {
                     (event.target.textContent =  "clicked" ):
                     (event.target.textContent = "My 2nd View");
     })
+    // let's move on to our next example
+    const nav = document.querySelector("nav");
+    nav.addEventListener("mouseover", (event) => {
+        event.target.classList.add("height100");
+        /* we noticed that height is changing back to original
+        size let's if we can toggle between height100 and 
+        original height */
+        /* it only changes when we mouseover again this 
+        not kinda of a thing we would like to have */
+        // so let's add another event
+    })
+    nav.addEventListener("mouseout", (event) => {
+        event.target.classList.remove("height100");
+    })
+    // so this should work fine now!
 }
 
 
