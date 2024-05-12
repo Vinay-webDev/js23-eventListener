@@ -192,7 +192,7 @@ it changed to "green"
 //////////////////////////////////////////////////////////////////////////////////////////////
 // how to add classes 
 // classLists
-document.addEventListener("readystatechange", (event) => {
+/* document.addEventListener("readystatechange", (event) => {
     if (event.target.readyState === "complete") {
         console.log("readyState: complete");
         initApp();
@@ -215,7 +215,7 @@ const initApp = () => {
         myText === "My 2nd View"? (event.target.textContent = "clicked"):
                                   (event.target.textContent = "My 2n View");
     }, false)
-}
+} */
 /* we konw we can easily toggle the backgroundColors but how to toggle
 text in h2??? 
 we can't just toggle the textContent directly like we did it with 
@@ -226,9 +226,31 @@ we need that with event.target.textContent*/
  I have "My 2nd view" so that's what causing problem here!!!! 
  idk what f happed it's only working first time!!! **/
 
+document.addEventListener("readystatechange", (event) => {
+    if (event.target.readyState === "complete") {
+        console.log("readyState: complete");
+        initApp();
+    }
+})
+const initApp = () => {
+    const view = document.querySelector("#view2");
+    const div = view.querySelector("div");
+    const h2 = div.querySelector("h2");
 
-
-
+    view.addEventListener("click", (event) => {
+        view.classList.toggle("green");
+        view.classList.toggle("darkblue");
+    })
+    div.addEventListener("click", (event) => {
+        div.classList.toggle("yellow");
+    })
+    h2.addEventListener("click", (event) => {
+        const myText = event.target.textContent;
+        myText === "My 2nd View" ? 
+                    (event.target.textContent =  "clicked" ):
+                    (event.target.textContent = "My 2nd View");
+    })
+}
 
 
 
